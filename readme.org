@@ -1,0 +1,10 @@
+#+title: Ditty
+
+A (hardware) audio player that I like to use.
+
+** Features
+
+- based on rp2040
+- loop song sequences
+- slow down / speed up
+- pitch down / pitch up
