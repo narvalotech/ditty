@@ -1,19 +1,18 @@
 cmake_minimum_required(VERSION 3.16)
 
 set(PLATFORM "pico" CACHE STRING "Target platform (HW version or native)")
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if(${PLATFORM} STREQUAL "pico")
-    include(vendor/pico-sdk/pico_sdk_init.cmake)
+    # Ugly AF.
+    include(${CMAKE_SOURCE_DIR}/vendor/pico-sdk/pico_sdk_init.cmake)
 endif()
 
 project(ditty)
 
 if(${PLATFORM} STREQUAL "pico")
     pico_sdk_init()
-endif()
-
-add_executable(${PROJECT_NAME} app/main.c)
-
-if(${PLATFORM} STREQUAL "pico")
-    include(cmake/pico.cmake)
+    add_subdirectory(app/pico)
+else()
+    add_subdirectory(app/native)
 endif()
