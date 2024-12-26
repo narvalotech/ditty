@@ -2,6 +2,8 @@
 
 A (hardware) audio player that I like to use.
 
+*THIS IS IN VERY EARLY DEVELOPMENT*
+
 ** Features
 
 - based on rp2040
