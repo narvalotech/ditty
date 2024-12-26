@@ -15,6 +15,10 @@
 #define TITLE_POS_Y (DISPLAY_HEIGHT - 30)
 #define TITLE_MAX_LEN 26
 
+#define PLAY_ICON_WIDTH 40
+#define PLAY_ICON_POS_X 30
+#define PLAY_ICON_POS_Y 35
+
 void drawTitle(char *title)
 {
     static char t[TITLE_MAX_LEN + 1] = {};
@@ -28,7 +32,7 @@ void drawTitle(char *title)
         t[TITLE_MAX_LEN] = 0;
     }
 
-    DrawText(t, TITLE_POS_X, TITLE_POS_Y, 20, DARKGRAY);
+    DrawText(t, TITLE_POS_X, TITLE_POS_Y, 20, BLACK);
 }
 
 void drawProgress(uint8_t percent)
@@ -51,6 +55,31 @@ void drawProgress(uint8_t percent)
                   RAYWHITE);
 }
 
+void drawPause(int x, int y, int width)
+{
+    int ax = x - (width / 2);
+    int ay = y - (width / 2);
+
+    /* Background is black */
+    DrawRectangle(ax, ay, width, width, BLACK);
+
+    /* Split into two bars by drawing white in the middle */
+    DrawRectangle(ax + (width / 3), ay, width / 3 + 1, width, RAYWHITE);
+}
+
+void drawPlayIcon(bool playing)
+{
+    /* TODO: just use icons, man */
+    if (playing) {
+        Vector2 center = { PLAY_ICON_POS_X, PLAY_ICON_POS_Y };
+        float radius = PLAY_ICON_WIDTH / 2;
+
+        DrawPoly(center, 3, radius, 120, BLACK);
+    } else {
+        drawPause(PLAY_ICON_POS_X, PLAY_ICON_POS_Y, PLAY_ICON_WIDTH);
+    }
+}
+
 int main(void)
 {
     const int screenWidth = 320;
@@ -70,6 +99,7 @@ int main(void)
 
         drawProgress(33);
         drawTitle("Darude - Sandstorm (Dune official soundtrack)");
+        drawPlayIcon(true);
 
         EndDrawing();
     }
