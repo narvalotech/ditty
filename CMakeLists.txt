@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.16)
 set(PLATFORM "pico" CACHE STRING "Target platform (HW version or native)")
 
 if(${PLATFORM} STREQUAL "pico")
-    include(pico-sdk/pico_sdk_init.cmake)
+    include(vendor/pico-sdk/pico_sdk_init.cmake)
 endif()
 
 project(ditty)
