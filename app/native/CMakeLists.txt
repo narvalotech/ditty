@@ -12,5 +12,7 @@ target_include_directories(native PRIVATE
 target_link_libraries(native
     ${RAYLIB_DIR}/lib/libraylib.a)
 
+target_compile_options(native PRIVATE -Werror)
+
 target_link_libraries(native m pthread dl rt)
 target_compile_definitions(native PRIVATE GRAPHICS_API_OPENGL_33)

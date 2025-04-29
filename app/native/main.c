@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <string.h>
 #include "raylib.h"
+#include "display.h"
 
 #define DISPLAY_WIDTH 320
 #define DISPLAY_HEIGHT 172
