@@ -83,7 +83,7 @@ void drawPlayIcon(bool playing)
 
 bool mainloop(void)
 {
-    ClearBackground(RAYWHITE);
+    display_clear();
 
     drawProgress(33);
     drawTitle("Darude - Sandstorm (Dune official soundtrack)");

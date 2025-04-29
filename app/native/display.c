@@ -25,3 +25,8 @@ void display_start_loop(loop_callback_t *cb)
 
     CloseWindow();
 }
+
+void display_clear(void)
+{
+    ClearBackground(RAYWHITE);
+}
