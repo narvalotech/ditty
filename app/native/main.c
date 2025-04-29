@@ -80,31 +80,26 @@ void drawPlayIcon(bool playing)
     }
 }
 
+bool mainloop(void)
+{
+    ClearBackground(RAYWHITE);
+
+    drawProgress(33);
+    drawTitle("Darude - Sandstorm (Dune official soundtrack)");
+    drawPlayIcon(true);
+
+    return true;
+}
+
 int main(void)
 {
+    /* x/y starts at top-left */
+
     const int screenWidth = 320;
     const int screenHeight = 172;
 
-    InitWindow(screenWidth, screenHeight, "ditty");
-    SetTargetFPS(60);
-
-    /* x/y starts at top-left */
-
-    // Main game loop
-    while (!WindowShouldClose())
-    {
-        BeginDrawing();
-
-        ClearBackground(RAYWHITE);
-
-        drawProgress(33);
-        drawTitle("Darude - Sandstorm (Dune official soundtrack)");
-        drawPlayIcon(true);
-
-        EndDrawing();
-    }
-
-    CloseWindow();
+    display_init(NULL, screenWidth, screenHeight);
+    display_start_loop(&mainloop);
 
     return 0;
 }

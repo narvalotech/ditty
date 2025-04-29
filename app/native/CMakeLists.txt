@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.16)
 
 set(RAYLIB_DIR ${CMAKE_SOURCE_DIR}/vendor/raylib)
 
-add_executable(native main.c)
+add_executable(native
+    main.c
+    display.c)
 
 target_include_directories(native PRIVATE
     ${RAYLIB_DIR}/include)
