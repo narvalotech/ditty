@@ -33,13 +33,13 @@ void drawTitle(char *title)
         t[TITLE_MAX_LEN] = 0;
     }
 
-    DrawText(t, TITLE_POS_X, TITLE_POS_Y, 20, BLACK);
+    ngl_draw_text(t, TITLE_POS_X, TITLE_POS_Y, 20, NGLC_BLACK);
 }
 
 void drawProgress(uint8_t percent)
 {
     /* Background */
-    DrawRectangle(PROGRESS_POX_X, PROGRESS_POX_Y, PROGRESS_WIDTH, PROGRESS_HEIGHT, BLACK);
+    ngl_draw_rectangle(PROGRESS_POX_X, PROGRESS_POX_Y, PROGRESS_WIDTH, PROGRESS_HEIGHT, NGLC_BLACK);
 
     uint8_t rem = 100 - percent;
     /* uint8_t rem = 100; */
@@ -49,11 +49,11 @@ void drawProgress(uint8_t percent)
     pos_x += PROGRESS_WIDTH - width;
 
     /* Progress: white-out the remaining percentage. */
-    DrawRectangle(pos_x,
-                  PROGRESS_POX_Y + PROGRESS_MARGIN,
-                  width,
-                  PROGRESS_HEIGHT - (2 * PROGRESS_MARGIN),
-                  RAYWHITE);
+    ngl_draw_rectangle(pos_x,
+                       PROGRESS_POX_Y + PROGRESS_MARGIN,
+                       width,
+                       PROGRESS_HEIGHT - (2 * PROGRESS_MARGIN),
+                       NGLC_OFFWHITE);
 }
 
 void drawPause(int x, int y, int width)
@@ -62,10 +62,10 @@ void drawPause(int x, int y, int width)
     int ay = y - (width / 2);
 
     /* Background is black */
-    DrawRectangle(ax, ay, width, width, BLACK);
+    ngl_draw_rectangle(ax, ay, width, width, NGLC_BLACK);
 
     /* Split into two bars by drawing white in the middle */
-    DrawRectangle(ax + (width / 3), ay, width / 3 + 1, width, RAYWHITE);
+    ngl_draw_rectangle(ax + (width / 3), ay, width / 3 + 1, width, NGLC_OFFWHITE);
 }
 
 void drawPlayIcon(bool playing)
@@ -94,12 +94,7 @@ bool mainloop(void)
 
 int main(void)
 {
-    /* x/y starts at top-left */
-
-    const int screenWidth = 320;
-    const int screenHeight = 172;
-
-    ngl_init(NULL, screenWidth, screenHeight);
+    ngl_init(NULL, DISPLAY_WIDTH, DISPLAY_HEIGHT);
     ngl_start_loop(&mainloop);
 
     return 0;
