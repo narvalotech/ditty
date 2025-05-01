@@ -16,6 +16,11 @@ pkgs.mkShell {
     libGL
     alsa-lib
     mesa
+
+    # Python with Pillow
+    (python3.withPackages (ps: with ps; [
+      pillow
+    ]))
   ];
 
   shellHook = ''
