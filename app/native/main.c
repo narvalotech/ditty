@@ -68,14 +68,12 @@ void drawPause(int x, int y, int width)
     ngl_draw_rectangle(ax + (width / 3), ay, width / 3 + 1, width, NGLC_OFFWHITE);
 }
 
+extern const struct ngl_img img_play;
+
 void drawPlayIcon(bool playing)
 {
-    /* TODO: just use icons, man */
     if (playing) {
-        Vector2 center = { PLAY_ICON_POS_X, PLAY_ICON_POS_Y };
-        float radius = PLAY_ICON_WIDTH / 2;
-
-        DrawPoly(center, 3, radius, 120, BLACK);
+        ngl_draw_bitmap(&img_play, PLAY_ICON_POS_X, PLAY_ICON_POS_Y, 0);
     } else {
         drawPause(PLAY_ICON_POS_X, PLAY_ICON_POS_Y, PLAY_ICON_WIDTH);
     }
@@ -95,7 +93,7 @@ bool mainloop(void)
 int main(void)
 {
     ngl_init(NULL, DISPLAY_WIDTH, DISPLAY_HEIGHT);
-    ngl_start_loop(&mainloop);
+    ngl_start_loop(mainloop);
 
     return 0;
 }
