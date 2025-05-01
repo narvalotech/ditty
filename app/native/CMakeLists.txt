@@ -4,7 +4,7 @@ set(RAYLIB_DIR ${CMAKE_SOURCE_DIR}/vendor/raylib)
 
 add_executable(native
     main.c
-    display.c)
+    ngl.c)
 
 target_include_directories(native PRIVATE
     ${RAYLIB_DIR}/include)

@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <string.h>
 #include "raylib.h"
-#include "display.h"
+#include "ngl.h"
 
 #define DISPLAY_WIDTH 320
 #define DISPLAY_HEIGHT 172
@@ -83,7 +83,7 @@ void drawPlayIcon(bool playing)
 
 bool mainloop(void)
 {
-    display_clear();
+    ngl_clear();
 
     drawProgress(33);
     drawTitle("Darude - Sandstorm (Dune official soundtrack)");
@@ -99,8 +99,8 @@ int main(void)
     const int screenWidth = 320;
     const int screenHeight = 172;
 
-    display_init(NULL, screenWidth, screenHeight);
-    display_start_loop(&mainloop);
+    ngl_init(NULL, screenWidth, screenHeight);
+    ngl_start_loop(&mainloop);
 
     return 0;
 }
