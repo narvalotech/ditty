@@ -1,5 +1,5 @@
 #include "ngl.h"
-#include "images/@imgname@.xbm"
+#include "@imgname@.xbm"
 
 const struct ngl_img img_@imgname@ = {
 .xbm = im_bits,

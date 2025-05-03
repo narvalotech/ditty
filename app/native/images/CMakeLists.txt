@@ -31,8 +31,9 @@ add_library(images
     ${image_c_list}
 )
 
+target_link_libraries(images ngl)
+
 target_include_directories(images PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/../
     ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_include_directories(images PUBLIC

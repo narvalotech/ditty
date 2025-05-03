@@ -1,7 +1,6 @@
 #include <stdint.h>
 #include <string.h>
-#include "raylib.h"
-#include "ngl.h"
+#include "lib/ngl.h"
 #include "images/images.h"
 
 #define DISPLAY_WIDTH 320
