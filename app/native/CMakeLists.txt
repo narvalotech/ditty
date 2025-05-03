@@ -5,8 +5,10 @@ set(RAYLIB_DIR ${CMAKE_SOURCE_DIR}/vendor/raylib)
 add_executable(native
     main.c
     ngl.c
-    images/play.c
 )
+
+add_subdirectory(images)
+target_link_libraries(native images)
 
 target_include_directories(native PRIVATE
     ${CMAKE_SOURCE_DIR}

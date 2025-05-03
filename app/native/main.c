@@ -2,6 +2,7 @@
 #include <string.h>
 #include "raylib.h"
 #include "ngl.h"
+#include "images/images.h"
 
 #define DISPLAY_WIDTH 320
 #define DISPLAY_HEIGHT 172
@@ -56,27 +57,9 @@ void drawProgress(uint8_t percent)
                        NGLC_OFFWHITE);
 }
 
-void drawPause(int x, int y, int width)
-{
-    int ax = x - (width / 2);
-    int ay = y - (width / 2);
-
-    /* Background is black */
-    ngl_draw_rectangle(ax, ay, width, width, NGLC_BLACK);
-
-    /* Split into two bars by drawing white in the middle */
-    ngl_draw_rectangle(ax + (width / 3), ay, width / 3 + 1, width, NGLC_OFFWHITE);
-}
-
-extern const struct ngl_img img_play;
-
 void drawPlayIcon(bool playing)
 {
-    if (playing) {
-        ngl_draw_bitmap(&img_play, PLAY_ICON_POS_X, PLAY_ICON_POS_Y, 0);
-    } else {
-        drawPause(PLAY_ICON_POS_X, PLAY_ICON_POS_Y, PLAY_ICON_WIDTH);
-    }
+    ngl_draw_bitmap(playing ? &img_play : &img_pause, PLAY_ICON_POS_X, PLAY_ICON_POS_Y, 0);
 }
 
 bool mainloop(void)
@@ -85,7 +68,7 @@ bool mainloop(void)
 
     drawProgress(33);
     drawTitle("Darude - Sandstorm (Dune official soundtrack)");
-    drawPlayIcon(true);
+    drawPlayIcon(false);
 
     return true;
 }

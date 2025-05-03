@@ -1,0 +1,7 @@
+#ifndef IMAGES_H_
+#define IMAGES_H_
+
+extern const struct ngl_img
+@image_h_list@;
+
+#endif // IMAGES_H_

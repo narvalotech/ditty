@@ -1,7 +1,7 @@
 #include "ngl.h"
-#include "images/play.xbm"
+#include "images/@imgname@.xbm"
 
-const struct ngl_img img_play = {
+const struct ngl_img img_@imgname@ = {
 .xbm = im_bits,
 .width = im_width,
 .height = im_height,
